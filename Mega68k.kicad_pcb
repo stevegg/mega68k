@@ -3686,7 +3686,7 @@
   (gr_text "MC68000 Experimentation \nBoard" (at 96.7232 98.3488) (layer "F.SilkS") (tstamp 0674c5a1-ca4b-4b6b-aa60-3847e1a37d52)
     (effects (font (size 1 1) (thickness 0.25)))
   )
-  (gr_text "v20220718" (at 148.209 90.1446 90) (layer "F.SilkS") (tstamp 30c0fca8-d0c9-4336-a736-aca5533db83d)
+  (gr_text "v20220804" (at 148.209 90.1446 90) (layer "F.SilkS") (tstamp 30c0fca8-d0c9-4336-a736-aca5533db83d)
     (effects (font (size 1 1) (thickness 0.2)))
   )
   (gr_text "Mega 68k" (at 96.3422 94.0054) (layer "F.SilkS") (tstamp 3be4026d-8822-4555-89da-7ddf08ab9e9b)

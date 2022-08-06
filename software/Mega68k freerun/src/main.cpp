@@ -64,18 +64,19 @@ void addressStrobe() {
   Serial.print(". ");
   word address = getAddress();
   boolean reading = IS_READING;
+  word data =getROMorRAM(address); 
   if ( reading ) {
-    setDataBus(getROMorRAM(address));
+    setDataBus(data);
   } else {
     setRAM(address, getDataBus());
   }
-  sprintf(buffer, "%c|%X", (reading?'R':'W'), address);
+  sprintf(buffer, "%c %04X|(BINARY) : %04X %c", (reading?'R':'W'), address, data, (data & 0xFF));
   Serial.println(buffer);
 
   // Strobe DTACK
-  PORTG = PORTG & ~(1 << DTACK_PORT);
-  delayMicroseconds(1000);
-  PORTG = PORTG & (1 << DTACK_PORT);
+  //PORTG &= ~(1 << DTACK_PORT);
+  //delayMicroseconds(1000);
+  //PORTG |= (1<<DTACK_PORT);
 }
 
 // PORT MANIPULATION
@@ -96,29 +97,34 @@ void setup() {
       (1 << DDG2)   // pinMode(D39, OUTPUT)
     );
 
+  // Set R/W pint to input
+  DDRH = DDRH & ~( 1 << PORTH4);
+
   // Setup address as input
   ADDRESS_LOW_DDR = B00000000;
   ADDRESS_HI_DDR = B00000000;
 
   // Assert reset by pulling it low and set DTACK HIGH
-  PORTG = PORTG & ~(1 << RESET_PORT);
-  PORTG = PORTG & (1 << DTACK_PIN);
+  PORTG &= ~(1 << RESET_PORT);
+  PORTG |= (1 << DTACK_PORT);
 
   // Attach interrupt to Address Strobe pin
-  pinMode(ADDRESS_STROBE, INPUT_PULLUP);
-  pinMode(READ_WRITE, INPUT_PULLUP);
+  pinMode(ADDRESS_STROBE, INPUT);
   attachInterrupt(digitalPinToInterrupt(ADDRESS_STROBE), addressStrobe, FALLING);
 
   // Make sure we delay at least 200ms
-  delay(200);
+  delay(400);
 
   // Now set reset to HIGH
-  PORTG = PORTG & (1 << RESET_PIN);
+  PORTG |= (1<<RESET_PORT);
+
+  // Set DTACK LOW for free run
+  PORTG &= ~(1 << DTACK_PORT);
 
   Serial.println("Init complete.");
 
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
 }

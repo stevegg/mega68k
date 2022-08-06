@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 1858)
+    (start_pass_no 35936)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -41,10 +41,22 @@
     (attach off)
   )
   (via 
+    "Via[0-1]_800:400_um-GND" "Via[0-1]_800:400_um" GND
+  )
+  (via 
+    "Via[0-1]_800:400_um-VCC" "Via[0-1]_800:400_um" VCC
+  )
+  (via 
     "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
   )
   (via 
     "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    GND "Via[0-1]_800:400_um-GND"
+  )
+  (via_rule
+    VCC "Via[0-1]_800:400_um-VCC"
   )
   (via_rule
     default "Via[0-1]_800:400_um"
@@ -53,18 +65,19 @@
     "kicad_default" "Via[0-1]_800:400_um-kicad_default"
   )
   (class default
-    VCC GND /D4 /D3 /D2 /D1 /D0 /AS
-    /UDS /LDS /R{slash}W /DTACK /BG /BGACK /BR "/CPU_CLK"
-    /HALT /RESET /VMA /E /VPA /BERR /IPL2 /IPL1
-    /IPL0 /FC2 /FC1 /FC0 /A1 /A2 /A3 /A4
-    /A5 /A6 /A7 /A8 /A9 /A10 /A11 /A12
-    /A13 /A14 /A15 /A16 /A17 /A18 /A19 /A20
-    /A21 /A22 /A23 /D15 /D14 /D13 /D12 /D11
-    /D10 /D9 /D8 /D7 /D6 /D5 "unconnected-(XA1-Pad3V3)" "unconnected-(XA1-PadAREF)"
-    "unconnected-(XA1-PadD0)" "unconnected-(XA1-PadD1)" /~{UDS} "unconnected-(X1-Pad1)" "unconnected-(XA1-PadD21)" "unconnected-(XA1-PadIORF)" "unconnected-(XA1-PadRST1)" "unconnected-(XA1-PadSCL)"
-    "unconnected-(XA1-PadSDA)" "unconnected-(XA1-PadVIN)" "Net-(D1-Pad2)" "unconnected-(XA1-PadA14)" "unconnected-(XA1-PadA15)" "unconnected-(XA1-PadD4)" "unconnected-(XA1-PadD8)" "unconnected-(XA1-PadD9)"
-    "/INT_CLK" "/EXT_CLK" "/~{RAM_SEL}" /~{LDS} /R~{W} "/~{ROM_SEL}" "unconnected-(XA1-PadRST2)" "/SDCARD_SEL"
-    "/SPI_SCK" "/SPI_MOSI" "/SPI_MISO" "/SPI_VCC" "/SPI_GND"
+    /D4 /D3 /D2 /D1 /D0 /AS /UDS /LDS
+    /R{slash}W /DTACK /BG /BGACK /BR "/CPU_CLK" /HALT /RESET
+    /VMA /E /VPA /BERR /IPL2 /IPL1 /IPL0 /FC2
+    /FC1 /FC0 /A1 /A2 /A3 /A4 /A5 /A6
+    /A7 /A8 /A9 /A10 /A11 /A12 /A13 /A14
+    /A15 /A16 /A17 /A18 /A19 /A20 /A21 /A22
+    /A23 /D15 /D14 /D13 /D12 /D11 /D10 /D9
+    /D8 /D7 /D6 /D5 "unconnected-(XA1-Pad3V3)" "unconnected-(XA1-PadAREF)" "unconnected-(XA1-PadD0)" "unconnected-(XA1-PadD1)"
+    /~{UDS} "unconnected-(X1-Pad1)" "unconnected-(XA1-PadD21)" "unconnected-(XA1-PadIORF)" "unconnected-(XA1-PadRST1)" "unconnected-(XA1-PadSCL)" "unconnected-(XA1-PadSDA)" "unconnected-(XA1-PadVIN)"
+    "Net-(D1-Pad2)" "unconnected-(XA1-PadA14)" "unconnected-(XA1-PadA15)" "unconnected-(XA1-PadD4)" "unconnected-(XA1-PadD8)" "unconnected-(XA1-PadD9)" "/INT_CLK" "/EXT_CLK"
+    "/~{RAM_SEL}" /~{LDS} /R~{W} "/~{ROM_SEL}" "unconnected-(XA1-PadRST2)" "/SDCARD_SEL" "/SPI_SCK" "/SPI_MOSI"
+    "/SPI_MISO" "/SPI_VCC" "/SPI_GND" "Net-(D2-Pad2)" "Net-(D3-Pad2)" "Net-(D4-Pad2)" "Net-(D5-Pad2)" "Net-(R2-Pad1)"
+    "Net-(R3-Pad1)" "Net-(R4-Pad1)" "Net-(R5-Pad1)" "/~{SDCARD_SEL}" /~{DTACK} "unconnected-(U4-Pad10)" "unconnected-(U4-Pad12)"
     (clearance_class default)
     (via_rule default)
     (rule
@@ -79,6 +92,28 @@
     (via_rule kicad_default)
     (rule
       (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class GND
+    GND
+    (clearance_class GND)
+    (via_rule GND)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class VCC
+    VCC
+    (clearance_class VCC)
+    (via_rule VCC)
+    (rule
+      (width 500.0)
     )
     (circuit 
       (use_layer F.Cu B.Cu)

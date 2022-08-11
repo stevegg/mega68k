@@ -55,6 +55,7 @@
 #define FC1_PIN             PORTH1
 #define FC2_PIN             PORTH3
 
+#define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 
 #define IsReading()         (PORTH & (1<<PORTH4)) > 0
 

@@ -94,16 +94,9 @@ void loop() {
   // Check for Address Strobe
   if ( !(PIND & (1<<ADDRESS_STROBE_PIN)) ) {
     // Check R/W state
-    boolean reading = (PORTH & (1<<READ_WRITE_PIN));
+    boolean reading = (PINH & (1<<READ_WRITE_PIN));
 
-    // We only use the first 7 bits of the X Address.  Last bit is E Signal from 68k
-    unsigned long xAddress = ADDRESS_X_PIN & ~(1<<7);
-    unsigned long hAddress = ADDRESS_HI_PIN;
-    unsigned long lAddress = ADDRESS_LOW_PIN;
-
-    // Combine X, H and L into an an address.  Since we don't have an A0 line
-    // we'll shift the whole address left by 1 bit to account for this.
-    unsigned long address = ((xAddress<<16) | (hAddress<<8) | lAddress) << 1;
+    unsigned long address = getAddress();
 
     word data = getROMorRAM(address);
     setDataBus(data);
@@ -113,8 +106,6 @@ void loop() {
       address, 
       data);
     Serial.println(buffer);
-
-    delay(100);
 
     // Assert DTACK
     PORTG &= ~(1 << DTACK_PORT);

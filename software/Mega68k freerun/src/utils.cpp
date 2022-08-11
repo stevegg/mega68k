@@ -1,10 +1,14 @@
 #include "defines.h"
 
 unsigned long getAddress() {
-  // For the 64 pin mc68000P10 there is no A0 pin so we need to do a final shift left
-  // to get the proper value
-  unsigned long xValue = ADDRESS_X_PIN;
-  return ((xValue<<16) | (ADDRESS_HI_PIN<<8) | ADDRESS_LOW_PIN) << 1;
+  // We only use the first 7 bits of the X Address.  Last bit is E Signal from 68k
+  unsigned long xAddress = ADDRESS_X_PIN & ~(1<<7);
+  unsigned long hAddress = ADDRESS_HI_PIN;
+  unsigned long lAddress = ADDRESS_LOW_PIN;
+
+  // Combine X, H and L into an an address.  Since we don't have an A0 line
+  // we'll shift the whole address left by 1 bit to account for this.
+  return ((xAddress<<16) | (hAddress<<8) | lAddress) << 1;
 }
 
 word getDataBus() {

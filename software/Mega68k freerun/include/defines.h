@@ -28,7 +28,7 @@
 #define DATA_HI_PORT        PORTF
 #define DATA_HI_DDR         DDRF
 
-#define ADDRESS_STROBE      20
+#define ADDRESS_STROBE_PIN  PORTD1
 #define READ_WRITE          7
 #define READ_WRITE_PIN      PORTH4
 

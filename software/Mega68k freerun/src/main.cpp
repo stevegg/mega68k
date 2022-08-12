@@ -86,7 +86,7 @@ void setup() {
   DDRD &= ~(1<<ADDRESS_STROBE_PIN);
 
   resetCPU();
-  Serial.println("Init complete.");
+  Serial.println("Init complete. Type a command, ? for help");
 }
 
 void loop() {
@@ -107,11 +107,26 @@ void loop() {
       data);
     Serial.println(buffer);
 
-    // Assert DTACK
-    PORTG &= ~(1 << DTACK_PORT);
-    delayMicroseconds(2);
-    // UnAssert DTACK
-    PORTG |= (1 << DTACK_PORT);
+    sprintf(buffer, "0x%06lx > ", address);
+    Serial.print(buffer);
+    while ( !Serial.available() );
+    char c = Serial.read();
+    Serial.println(c);
+    if ( c == 'n' || c == 'N' ) {
+      // Assert DTACK
+      PORTG &= ~(1 << DTACK_PORT);
+      delayMicroseconds(2);
+      // UnAssert DTACK
+      PORTG |= (1 << DTACK_PORT);
+    } else if ( c == '?') {
+      Serial.println("Steve's Mega68k Monitor");
+      Serial.println("-----------------------\n");
+      Serial.println("n/N - Next Instruction");
+      Serial.println("?   - This help");
+      Serial.println();
+    } else {
+      Serial.println("Syntax Error");
+    }
   }
 
 }

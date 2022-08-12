@@ -11,7 +11,7 @@
     (via_costs 50)
     (plane_via_costs 5)
     (start_ripup_costs 100)
-    (start_pass_no 35811)
+    (start_pass_no 19798)
     (layer_rule F.Cu
       (active on)
       (preferred_direction horizontal)
@@ -65,23 +65,22 @@
     "kicad_default" "Via[0-1]_800:400_um-kicad_default"
   )
   (class default
-    VCC GND /D4 /D3 /D2 /D1 /D0 /AS
-    /R{slash}W /DTACK /BG /BGACK /BR "/CPU_CLK" /HALT /RESET
-    /E /VPA /BERR /IPL1 /IPL0 /FC2 /FC1 /FC0
-    /A1 /A2 /A3 /A4 /A5 /A6 /A7 /A8
-    /A9 /A10 /A11 /A12 /A13 /A14 /A15 /A16
-    /A17 /A18 /A19 /A20 /A21 /D7 /D6 /D5
-    "unconnected-(XA1-Pad3V3)" "unconnected-(XA1-PadAREF)" "unconnected-(XA1-PadD0)" "unconnected-(XA1-PadD1)" "unconnected-(X1-Pad1)" "unconnected-(XA1-PadIORF)" "unconnected-(XA1-PadSCL)" "unconnected-(XA1-PadSDA)"
-    "unconnected-(XA1-PadVIN)" "Net-(D1-Pad2)" "/~{RAM_SEL}" "/~{ROM_SEL}" "unconnected-(XA1-PadRST2)" "/~{SDCARD_SEL}" "/~{ARD_RESET}" "/CPU_RST"
-    /R~{W} /~{AS} "unconnected-(J4-Pad66)" /DS /A0 "unconnected-(J3-Pad1)" /SDCS /SDD1
-    /SDD0 /SDCLK "unconnected-(J3-Pad7)" "unconnected-(XA1-Pad5V2)" "unconnected-(XA1-PadA7)" "unconnected-(XA1-PadD16)" "unconnected-(XA1-PadD17)" "unconnected-(XA1-PadD18)"
-    "unconnected-(XA1-PadD19)" "unconnected-(XA1-PadGND4)" "unconnected-(XA1-PadMISO)" "unconnected-(XA1-PadMOSI)" "unconnected-(XA1-PadSCK)" "unconnected-(J4-Pad25)" "unconnected-(J4-Pad26)" "unconnected-(J4-Pad35)"
-    "unconnected-(J4-Pad36)" "unconnected-(J4-Pad37)" "unconnected-(J4-Pad38)" "unconnected-(J4-Pad39)" "unconnected-(J4-Pad40)" "unconnected-(J4-Pad41)" "unconnected-(J4-Pad45)" /~{DS}
-    "unconnected-(J4-Pad52)" "/68681_X1" "/68681_X2" /RTSA /TxDA /RxDA /CTSA /~{OE}
-    "/~{RAM_WE}" "unconnected-(U2-Pad1)" /IP3 /CTSB "/~{DTACK_UART}" /RxDB "unconnected-(U2-Pad12)" /TxDB
-    /OP1 /OP3 /OP5 /OP7 "unconnected-(U2-Pad23)" /OP6 /OP4 /RTSB
-    "unconnected-(U2-Pad34)" /~{RESET} "/~{UART_SEL}" /IP2 "unconnected-(U2-Pad41)" /IP5 /IP4 "unconnected-(XA1-PadD21)"
-    "unconnected-(XA1-PadD20)" "unconnected-(XA1-PadD15)" "unconnected-(XA1-PadD14)" /IPL2
+    VCC GND /D4 /D3 /D2 /D1 /D0 "/CPU_CLK"
+    /E /FC2 /FC1 /FC0 /A1 /A2 /A3 /A4
+    /A5 /A6 /A7 /A8 /A9 /A10 /A11 /A12
+    /A13 /A14 /A15 /A16 /A17 /A18 /A19 /A20
+    /A21 /D7 /D6 /D5 "unconnected-(XA1-Pad3V3)" "unconnected-(XA1-PadAREF)" "unconnected-(XA1-PadD0)" "unconnected-(XA1-PadD1)"
+    "unconnected-(X1-Pad1)" "unconnected-(XA1-PadIORF)" "unconnected-(XA1-PadSCL)" "unconnected-(XA1-PadSDA)" "unconnected-(XA1-PadVIN)" "Net-(D1-Pad2)" "/~{RAM_SEL}" "/~{ROM_SEL}"
+    "unconnected-(XA1-PadRST2)" "/~{ARD_RESET}" "/CPU_RST" /R~{W} /~{AS} /A0 "unconnected-(J3-Pad1)" /SDCS
+    /SDD1 /SDD0 /SDCLK "unconnected-(J3-Pad7)" "unconnected-(XA1-Pad5V2)" "unconnected-(XA1-PadA7)" "unconnected-(XA1-PadD16)" "unconnected-(XA1-PadD17)"
+    "unconnected-(XA1-PadD18)" "unconnected-(XA1-PadD19)" "unconnected-(XA1-PadGND4)" "unconnected-(XA1-PadMISO)" "unconnected-(XA1-PadMOSI)" "unconnected-(XA1-PadSCK)" "unconnected-(J4-Pad25)" "unconnected-(J4-Pad26)"
+    "unconnected-(J4-Pad35)" "unconnected-(J4-Pad36)" "unconnected-(J4-Pad37)" "unconnected-(J4-Pad38)" "unconnected-(J4-Pad39)" "unconnected-(J4-Pad40)" "unconnected-(J4-Pad41)" "unconnected-(J4-Pad45)"
+    /~{DS} "unconnected-(J4-Pad52)" "/68681_X1" "/68681_X2" /RTSA /TxDA /RxDA /CTSA
+    /~{OE} "/~{RAM_WE}" "unconnected-(U2-Pad1)" /IP3 /CTSB "/~{DTACK_UART}" /RxDB "unconnected-(U2-Pad12)"
+    /TxDB /OP1 /OP3 /OP5 /OP7 "unconnected-(U2-Pad23)" /OP6 /OP4
+    /RTSB "unconnected-(U2-Pad34)" /~{RESET} "/~{UART_SEL}" /IP2 "unconnected-(U2-Pad41)" /IP5 /IP4
+    "unconnected-(XA1-PadD21)" "unconnected-(XA1-PadD20)" "unconnected-(XA1-PadD15)" "unconnected-(XA1-PadD14)" "unconnected-(C6-Pad2)" /~{DTACK} /~{BG} /~{BGACK}
+    /~{BR} /~{HALT} /~{VPA} /~{BERR} /~{IPL1} /~{IPL2} /~{IPL0}
     (clearance_class default)
     (via_rule default)
     (rule

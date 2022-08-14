@@ -55,7 +55,7 @@
     DC.L DUMMYHANDLER ; TRAP 14
     DC.L DUMMYHANDLER ; TRAP 15
     
-    ORG $0C0
+    ORG $0100
 
 _START:
 
@@ -73,6 +73,7 @@ DUMMYHANDLER:
 STACK:
 
     END _START
+
 *~Font name~Courier New~
 *~Font size~18~
 *~Tab type~1~

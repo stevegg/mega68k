@@ -20,6 +20,12 @@ byte simpleLoop[] = {
   0x10, 0x3c, 0x00, 0x00, 0xb0, 0x3c, 0x00, 0xff, 0x67, 0xf6, 0x52, 0x40, 0x4e, 0xf8, 0x00, 0xc4,
   0x4e, 0x73 };
 
+// MC68000 is Big Endian so we need to return
+// a WORD consisting of HI Byte then LO Byte
+word getROM(unsigned long address) {
+  return ((simpleLoop[address] << 8) | simpleLoop[address+1]);
+}
+
 void resetCPU() {
   Serial.println("Reset CPU");
 
@@ -105,25 +111,7 @@ void setup() {
   Serial.println("Init complete. Type a command, ? for help");
 }
 
-// MC68000 is Big Endian so we need to return
-// a WORD consisting of HI Byte then LO Byte
-word getROM(unsigned long address) {
-  byte hiByte = simpleLoop[address];
-  byte loByte = simpleLoop[address+1];
-  word data = ((hiByte << 8) | loByte);
-  Serial.print("ROM: ");
-  Serial.print(address, 16);
-  Serial.print(",");
-  Serial.print(address+1, 16);
-  Serial.print(" : ");
-  Serial.print(hiByte, 16);
-  Serial.print(",");
-  Serial.print(loByte, 16);
-  Serial.print( " - ");
-  Serial.println(data, 16);
 
-  return data;
-}
 
 void loop() {
 
@@ -134,14 +122,8 @@ void loop() {
     // Get the address
     unsigned long address = getAddress();
 
-    if ( reading ) {
-      word data = getROM(address);
-      setDataBus(data);
-    } else {
-      // We're writing
-      word data = getDataBus();
-      setRAM(address, data);
-    }
+    word data = getROM(address);
+    setDataBus(data);
 
     sprintf(buffer, "%c 0x%06lX : 0x%04X", 
       (reading)?'R':'W',

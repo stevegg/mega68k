@@ -8,5 +8,8 @@ Right now there are 2 software projects:
 Both of these are in the software sub-directory.
 The hardware sub-directory contains the KiKad 6.0 project along with the required symbol and footprint libraries and the gerbers.
 
+For Arduino software development I'm using VSCode and the platformio plugin.  This provides a pleasant and smooth development experience.
+
+For assembler I'm using Easy68k...this provides a less smooth and pleasant development experience but it does work and the simulation is quite useful.
 
 ![V20220811](./hardware/V20220811.png)

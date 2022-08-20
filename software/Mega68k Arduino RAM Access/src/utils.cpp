@@ -77,8 +77,21 @@ void setD38(boolean set) {
   }
 }
 
+// MC68000 is Big Endian so we need to return
+// a WORD consisting of HI Byte then LO Byte
 data_t getROMorRAM(word address) {
-  return 0x00;
+  if ( address >= RAM_BASE ) {
+#ifdef DATA_BUS_WIDTH_16
+    return ( RAM[address - RAM_BASE] << 8 ) | RAM[(address - RAM_BASE) + 1];
+#else
+    return ( RAM[address - RAM_BASE]);
+#endif
+  }
+#ifdef DATA_BUS_WIDTH_16  
+  return ( ROM[address] << 8 ) | ROM [address+1];
+#else
+  return ( ROM[address] );
+#endif  
 }
 
 void setRAM(word address, data_t data) {

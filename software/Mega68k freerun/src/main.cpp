@@ -73,11 +73,15 @@ void setup() {
 
   // Data bus as output (may also be input)
   DATA_LOW_DDR = B11111111;
+#ifdef DATA_BUS_WIDTH_16  
   DATA_HI_DDR = B11111111;
+#endif  
 
   // Set everything to zero
   DATA_LOW_PORT = 0x00;
+#ifdef DATA_BUS_WIDTH_16  
   DATA_HI_PORT = 0x00;
+#endif
 
   // Set CLK_INPUT pin to INPUT
   DDRG &= ~(1<<CLK_INPUT);
@@ -94,7 +98,7 @@ void loop() {
   // Check for Address Strobe
   if ( !(PIND & (1<<ADDRESS_STROBE_PIN)) ) {
     // Check R/W state
-    boolean reading = (PINH & (1<<READ_WRITE_PIN));
+    boolean reading = (PINH & (1<<RW_PORT));
 
     unsigned long address = getAddress();
 
